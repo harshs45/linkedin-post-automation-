@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+/* Enable class-based dark mode in Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-linkedin-light: #0a66c2;
+  --color-linkedin-dark: #004182;
+  
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+  --shadow-elevated: 0 10px 40px -4px rgba(0, 0, 0, 0.05);
+
+  --shadow-subtle-dark: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+  --shadow-elevated-dark: 0 10px 40px -4px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  @apply bg-[#fcfcfc] text-slate-900 font-sans selection:bg-slate-200 selection:text-slate-900;
+  background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  background-position: center top;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark body {
+  @apply bg-[#0c0c11] text-slate-100 selection:bg-slate-700 selection:text-slate-100;
+  background-image: linear-gradient(to right, #1a1a26 1px, transparent 1px), linear-gradient(to bottom, #1a1a26 1px, transparent 1px);
+  background-size: 4rem 4rem;
+}
+
+@layer utilities {
+  .structural-border {
+    @apply border border-slate-200 dark:border-[#2a2a3d];
+  }
+
+  .glass-panel {
+    @apply bg-white/95 backdrop-blur-md border border-slate-200 shadow-subtle;
+    @apply dark:bg-[#13131c]/95 dark:border-[#2a2a3d];
+  }
+  
+  .text-hierarchy-title {
+    @apply text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100;
+  }
+  
+  .text-hierarchy-subtitle {
+    @apply text-sm font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400;
+  }
+
+  /* Dark mode glow for accents */
+  .dark .purple-glow {
+    box-shadow: 0 0 20px rgba(124, 106, 247, 0.15);
+  }
+}
